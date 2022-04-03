@@ -11,12 +11,11 @@ public class Funcionario {
     private String identidade;
     private List<Filho> filhos;
 
-    public Funcionario(String cpf, String nome, float salario, String identidade, List<Filho> filhos) {
+    public Funcionario(String cpf, String nome, float salario, String identidade) {
         this.cpf = cpf;
         this.nome = nome;
         this.salario = salario;
         this.identidade = identidade;
-        this.filhos = filhos;
     }
 
     public Funcionario() {

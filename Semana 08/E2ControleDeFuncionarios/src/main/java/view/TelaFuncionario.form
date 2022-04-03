@@ -46,9 +46,10 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="btnIncluir" min="-2" max="-2" attributes="0"/>
                       <Component id="lblSalario" linkSize="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblIdentidade" linkSize="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblNome" linkSize="3" min="-2" max="-2" attributes="0"/>
@@ -61,7 +62,7 @@
                       <Component id="tfdSalario" min="-2" pref="210" max="-2" attributes="0"/>
                       <Component id="tfdNome" alignment="0" min="-2" pref="255" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="0" pref="132" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="144" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -88,7 +89,9 @@
                       <Component id="tfdSalario" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblSalario" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="269" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                  <Component id="btnIncluir" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="203" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -121,6 +124,14 @@
         <Component class="javax.swing.JTextField" name="tfdIdentidade">
         </Component>
         <Component class="javax.swing.JTextField" name="tfdSalario">
+        </Component>
+        <Component class="javax.swing.JButton" name="btnIncluir">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Incluir"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnIncluirActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

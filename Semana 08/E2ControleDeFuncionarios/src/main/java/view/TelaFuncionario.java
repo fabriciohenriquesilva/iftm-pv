@@ -1,9 +1,25 @@
 package view;
 
+import controller.FuncionarioController;
+import java.awt.Component;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
 public class TelaFuncionario extends javax.swing.JInternalFrame {
+
+    FuncionarioController funcionarioController;
 
     public TelaFuncionario() {
         initComponents();
+        funcionarioController = new FuncionarioController(this);
+    }
+
+    private void limparCampos() {
+        for (Component c : panel.getComponents()) {
+            if (c instanceof JTextField) {
+                ((JTextField) c).setText("");
+            }
+        }
     }
 
     /**
@@ -24,6 +40,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
         tfdNome = new javax.swing.JTextField();
         tfdIdentidade = new javax.swing.JTextField();
         tfdSalario = new javax.swing.JTextField();
+        btnIncluir = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -38,13 +55,21 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
 
         lblSalario.setText("Salário");
 
+        btnIncluir.setText("Incluir");
+        btnIncluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIncluirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
         panel.setLayout(panelLayout);
         panelLayout.setHorizontalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelLayout.createSequentialGroup()
-                .addGap(97, 97, 97)
+                .addGap(76, 76, 76)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnIncluir)
                     .addComponent(lblSalario)
                     .addComponent(lblIdentidade)
                     .addComponent(lblNome)
@@ -55,7 +80,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
                     .addComponent(tfdCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfdSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfdNome, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 132, Short.MAX_VALUE))
+                .addGap(0, 144, Short.MAX_VALUE))
         );
 
         panelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {lblCpf, lblIdentidade, lblNome, lblSalario});
@@ -79,7 +104,9 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfdSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblSalario))
-                .addContainerGap(269, Short.MAX_VALUE))
+                .addGap(43, 43, 43)
+                .addComponent(btnIncluir)
+                .addContainerGap(203, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -96,8 +123,16 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
         setBounds(0, 0, 640, 480);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIncluirActionPerformed
+
+        if (funcionarioController.incluir()) {
+            limparCampos();
+        }
+    }//GEN-LAST:event_btnIncluirActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnIncluir;
     private javax.swing.JLabel lblCpf;
     private javax.swing.JLabel lblIdentidade;
     private javax.swing.JLabel lblNome;
@@ -109,7 +144,19 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
     private javax.swing.JTextField tfdSalario;
     // End of variables declaration//GEN-END:variables
 
-    public String getCpf(){
+    public String getTfdCpf() {
         return tfdCpf.getText();
+    }
+
+    public String getTfdIdentidade() {
+        return tfdIdentidade.getText();
+    }
+
+    public String getTfdNome() {
+        return tfdNome.getText();
+    }
+
+    public String getTfdSalario() {
+        return tfdSalario.getText();
     }
 }
