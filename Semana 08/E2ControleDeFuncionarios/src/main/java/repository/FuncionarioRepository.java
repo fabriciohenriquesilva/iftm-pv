@@ -2,6 +2,7 @@ package repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import model.Funcionario;
 
 public class FuncionarioRepository {
@@ -19,11 +20,16 @@ public class FuncionarioRepository {
         return funcionarios.add(funcionario);
     }
     
-    public void alterar(){
+    public Funcionario consultar(String cpf){
+        Funcionario func = funcionarios.stream()
+                .filter(f -> cpf.equals(f.getCpf()))
+                .findFirst()
+                .orElseThrow();
         
+        return func;
     }
-    
-    public void consultar(){
+
+    public void alterar(){
         
     }
     
