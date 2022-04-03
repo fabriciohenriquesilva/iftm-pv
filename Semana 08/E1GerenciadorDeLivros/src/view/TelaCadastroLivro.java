@@ -89,6 +89,7 @@ public class TelaCadastroLivro extends javax.swing.JInternalFrame {
         btnAlterar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
+        btnLimparCampos = new javax.swing.JButton();
 
         setBorder(null);
         setClosable(true);
@@ -138,40 +139,52 @@ public class TelaCadastroLivro extends javax.swing.JInternalFrame {
             }
         });
 
+        btnLimparCampos.setText("Limpar Campos");
+        btnLimparCampos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimparCamposActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
         panel.setLayout(panelLayout);
         panelLayout.setHorizontalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
+            .addGroup(panelLayout.createSequentialGroup()
                 .addContainerGap(122, Short.MAX_VALUE)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelLayout.createSequentialGroup()
-                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblIsbn)
-                            .addComponent(lblEdicao)
-                            .addComponent(lblAno)
-                            .addComponent(lblEditora)
-                            .addComponent(lblTitulo)
-                            .addComponent(lblAutor))
-                        .addGap(49, 49, 49)
-                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tfdAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfdTitulo)
-                            .addComponent(tfdIsbn)
-                            .addComponent(tfdEdicao)
-                            .addComponent(tfdEditora)
-                            .addComponent(tfdAno, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnCadastrar)
-                        .addGap(45, 45, 45)
-                        .addComponent(btnAlterar)
-                        .addGap(44, 44, 44)
-                        .addComponent(btnBuscar)
-                        .addGap(41, 41, 41)
-                        .addComponent(btnExcluir)))
-                .addGap(100, 100, 100))
+                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelLayout.createSequentialGroup()
+                                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblIsbn)
+                                    .addComponent(lblEdicao)
+                                    .addComponent(lblAno)
+                                    .addComponent(lblEditora)
+                                    .addComponent(lblTitulo)
+                                    .addComponent(lblAutor))
+                                .addGap(49, 49, 49)
+                                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(tfdAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tfdTitulo)
+                                    .addComponent(tfdIsbn)
+                                    .addComponent(tfdEdicao)
+                                    .addComponent(tfdEditora)
+                                    .addComponent(tfdAno, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnCadastrar)
+                                .addGap(45, 45, 45)
+                                .addComponent(btnAlterar)
+                                .addGap(44, 44, 44)
+                                .addComponent(btnBuscar)
+                                .addGap(41, 41, 41)
+                                .addComponent(btnExcluir)))
+                        .addGap(100, 100, 100))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
+                        .addComponent(btnLimparCampos)
+                        .addGap(242, 242, 242))))
         );
 
         panelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAlterar, btnBuscar, btnCadastrar, btnExcluir});
@@ -211,7 +224,9 @@ public class TelaCadastroLivro extends javax.swing.JInternalFrame {
                     .addComponent(btnAlterar)
                     .addComponent(btnBuscar)
                     .addComponent(btnExcluir))
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addComponent(btnLimparCampos)
+                .addContainerGap(90, Short.MAX_VALUE))
         );
 
         panelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {lblAno, lblAutor, lblEdicao, lblEditora, lblIsbn, lblTitulo});
@@ -261,9 +276,14 @@ public class TelaCadastroLivro extends javax.swing.JInternalFrame {
                         JOptionPane.showMessageDialog(this,
                                 "O livro foi cadastrado com sucesso!",
                                 "Livro cadastrado", JOptionPane.INFORMATION_MESSAGE);
-                        limparCampos();
-                        System.out.println(li);
                     }
+                    else{
+                        JOptionPane.showMessageDialog(this,
+                                "O livro não foi cadastrado, pois já existe um livro registrado com o mesmo ISBN!",
+                                "Livro já existe", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                    limparCampos();
+                        System.out.println(li);
                 } catch (NumberFormatException e) {
                     JOptionPane.showMessageDialog(this,
                             "O campo edição do livro aceita apenas números",
@@ -279,7 +299,10 @@ public class TelaCadastroLivro extends javax.swing.JInternalFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         String titulo = tfdTitulo.getText();
-        buscarLivro(titulo);
+        Livro livro = buscarLivro(titulo);
+        if(livro == null){
+            limparCampos();
+        }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
@@ -289,58 +312,57 @@ public class TelaCadastroLivro extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this,
                     "Livro removido com sucesso!",
                     "Livro removido", JOptionPane.INFORMATION_MESSAGE);
+            limparCampos();
         }
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-        String titulo = tfdTitulo.getText();
-        Livro livro = buscarLivro(titulo);
+        Livro livro = new Livro();
 
-        String editora = tfdEditora.getText();
-        System.out.println("--> " + editora);
+        if (!camposPreenchidos()) {
+            JOptionPane.showMessageDialog(this,
+                    "Preencha todos os campos para alterar o livro!",
+                    "Preenchimento obrigatório", JOptionPane.INFORMATION_MESSAGE);
+        } else {
 
-        if (livro != null) {
-            if (!camposPreenchidos()) {
-                JOptionPane.showMessageDialog(this,
-                        "Preencha todos os campos para alterar o livro!",
-                        "Preenchimento obrigatório", JOptionPane.INFORMATION_MESSAGE);
-            } else {
+            livro.setTitulo(tfdTitulo.getText());
+            livro.setAutor(tfdAutor.getText());
+            livro.setEditora(tfdEditora.getText());
+            livro.setIsbn(tfdIsbn.getText());
+            System.out.println(tfdEditora.getText());
 
-                livro.setTitulo(tfdTitulo.getText());
-                livro.setAutor(tfdAutor.getText());
-                livro.setEditora(tfdEditora.getText());
-                livro.setIsbn(tfdIsbn.getText());
-                System.out.println(tfdEditora.getText());
+            try {
+                int ano = Integer.parseInt(tfdAno.getText());
 
                 try {
-                    int ano = Integer.parseInt(tfdAno.getText());
+                    int edicao = Integer.parseInt(tfdEdicao.getText());
 
-                    try {
-                        int edicao = Integer.parseInt(tfdEdicao.getText());
+                    livro.setAnoPublicacao(ano);
+                    livro.setEdicao(edicao);
 
-                        livro.setAnoPublicacao(ano);
-                        livro.setEdicao(edicao);
+                    gl.alterar(livro);
+                    JOptionPane.showMessageDialog(this,
+                            "Suas alterações foram salvas com sucesso!",
+                            "Alterado com sucesso", JOptionPane.INFORMATION_MESSAGE);
+                    limparCampos();
 
-                        gl.alterar(livro);
-                        JOptionPane.showMessageDialog(this,
-                                "Suas alterações foram salvas com sucesso!",
-                                "Alterado com sucesso", JOptionPane.INFORMATION_MESSAGE);
-                        limparCampos();
-
-                        System.out.println(livro);
-                    } catch (NumberFormatException e) {
-                        JOptionPane.showMessageDialog(this,
-                                "O campo edição aceita apenas números",
-                                "Campo preenchido com dado inválido", JOptionPane.WARNING_MESSAGE);
-                    }
+                    System.out.println(livro);
                 } catch (NumberFormatException e) {
                     JOptionPane.showMessageDialog(this,
-                            "O campo ano de publicação aceita apenas números",
+                            "O campo edição aceita apenas números",
                             "Campo preenchido com dado inválido", JOptionPane.WARNING_MESSAGE);
                 }
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this,
+                        "O campo ano de publicação aceita apenas números",
+                        "Campo preenchido com dado inválido", JOptionPane.WARNING_MESSAGE);
             }
         }
     }//GEN-LAST:event_btnAlterarActionPerformed
+
+    private void btnLimparCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparCamposActionPerformed
+        limparCampos();
+    }//GEN-LAST:event_btnLimparCamposActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -348,6 +370,7 @@ public class TelaCadastroLivro extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCadastrar;
     private javax.swing.JButton btnExcluir;
+    private javax.swing.JButton btnLimparCampos;
     private javax.swing.JLabel lblAno;
     private javax.swing.JLabel lblAutor;
     private javax.swing.JLabel lblEdicao;

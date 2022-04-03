@@ -57,41 +57,49 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
+              <Group type="102" attributes="0">
                   <EmptySpace pref="122" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="lblIsbn" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblEdicao" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblAno" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblEditora" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblTitulo" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblAutor" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="lblIsbn" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblEdicao" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblAno" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblEditora" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblTitulo" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblAutor" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="tfdAutor" linkSize="4" min="-2" pref="255" max="-2" attributes="0"/>
+                                      <Component id="tfdTitulo" linkSize="4" max="32767" attributes="0"/>
+                                      <Component id="tfdIsbn" linkSize="4" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="tfdEdicao" linkSize="4" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="tfdEditora" linkSize="4" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="tfdAno" linkSize="4" alignment="0" min="-2" pref="255" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace pref="27" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace pref="28" max="-2" attributes="0"/>
+                                  <Component id="btnCadastrar" linkSize="2" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                                  <Component id="btnAlterar" linkSize="2" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                                  <Component id="btnBuscar" linkSize="2" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                                  <Component id="btnExcluir" linkSize="2" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="tfdAutor" linkSize="4" min="-2" pref="255" max="-2" attributes="0"/>
-                              <Component id="tfdTitulo" linkSize="4" max="32767" attributes="0"/>
-                              <Component id="tfdIsbn" linkSize="4" alignment="0" max="32767" attributes="0"/>
-                              <Component id="tfdEdicao" linkSize="4" alignment="0" max="32767" attributes="0"/>
-                              <Component id="tfdEditora" linkSize="4" alignment="0" max="32767" attributes="0"/>
-                              <Component id="tfdAno" linkSize="4" alignment="0" min="-2" pref="255" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace pref="27" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="28" max="-2" attributes="0"/>
-                          <Component id="btnCadastrar" linkSize="2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                          <Component id="btnAlterar" linkSize="2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                          <Component id="btnBuscar" linkSize="2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                          <Component id="btnExcluir" linkSize="2" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnLimparCampos" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="242" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -135,7 +143,9 @@
                       <Component id="btnBuscar" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnExcluir" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="139" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                  <Component id="btnLimparCampos" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="90" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -213,6 +223,14 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExcluirActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnLimparCampos">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Limpar Campos"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLimparCamposActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
