@@ -5,6 +5,8 @@
  */
 package model;
 
+import java.util.Objects;
+
 /**
  *
  * @author iftm
@@ -86,6 +88,28 @@ public class Livro {
                 + ", anoPublicacao=" + anoPublicacao 
                 + ", edicao=" + edicao 
                 + ", isbn=" + isbn + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 23 * hash + Objects.hashCode(this.isbn);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Livro other = (Livro) obj;
+        return Objects.equals(this.isbn, other.isbn);
     }
     
 }

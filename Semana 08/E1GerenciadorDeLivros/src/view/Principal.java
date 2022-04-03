@@ -28,26 +28,26 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        desktop = new javax.swing.JDesktopPane();
         menuBar = new javax.swing.JMenuBar();
         livroMenu = new javax.swing.JMenu();
         livroMenuCadastrar = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gerenciador de Livros");
-        setPreferredSize(new java.awt.Dimension(660, 520));
+        setPreferredSize(new java.awt.Dimension(800, 622));
         setResizable(false);
 
-        jDesktopPane1.setPreferredSize(new java.awt.Dimension(640, 480));
+        desktop.setPreferredSize(new java.awt.Dimension(800, 600));
 
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout desktopLayout = new javax.swing.GroupLayout(desktop);
+        desktop.setLayout(desktopLayout);
+        desktopLayout.setHorizontalGroup(
+            desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 640, Short.MAX_VALUE)
         );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        desktopLayout.setVerticalGroup(
+            desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 480, Short.MAX_VALUE)
         );
 
@@ -69,23 +69,21 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(desktop, javax.swing.GroupLayout.DEFAULT_SIZE, 640, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(desktop, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
         );
 
-        pack();
+        setSize(new java.awt.Dimension(656, 541));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void livroMenuCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_livroMenuCadastrarActionPerformed
-        CadastroLivros cl = new CadastroLivros();
-        jDesktopPane1.add(cl);
+        TelaCadastroLivro cl = new TelaCadastroLivro();
+        desktop.add(cl);
         cl.setVisible(true);
-//        cl.setPreferredSize(this.getPreferredSize());
-//        cl.setSize(800, 600);
     }//GEN-LAST:event_livroMenuCadastrarActionPerformed
 
     /**
@@ -124,7 +122,7 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JDesktopPane desktop;
     private javax.swing.JMenu livroMenu;
     private javax.swing.JMenuItem livroMenuCadastrar;
     private javax.swing.JMenuBar menuBar;
