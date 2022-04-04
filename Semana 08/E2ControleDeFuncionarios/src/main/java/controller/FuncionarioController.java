@@ -51,18 +51,17 @@ public class FuncionarioController {
         return false;
     }
 
-    public boolean consultar() {
+    public boolean consultar(String cpfBuscado) {
 
-        String cpf = telaFuncionario.getTfdCpf();
-        if("".equals(cpf)){
+        if("".equals(cpfBuscado) || cpfBuscado == null){
             MensagemUtil.addAviso(telaFuncionario, "Por favor, informe um CPF para realizar a busca!");
             return false;
         }
 
         try {
-            funcionario = repository.consultar(cpf);
+            funcionario = repository.consultar(cpfBuscado);
 
-            telaFuncionario.setTfdCpf(cpf);
+            telaFuncionario.setTfdCpf(funcionario.getCpf());
             telaFuncionario.setTfdNome(funcionario.getNome());
             telaFuncionario.setTfdIdentidade(funcionario.getIdentidade());
             float salario = funcionario.getSalario();
@@ -74,6 +73,43 @@ public class FuncionarioController {
             return false;
         }
         return true;
+    }
+    
+    public boolean alterar(){
+        
+        if(camposEmBranco()){
+            MensagemUtil.addAviso(telaFuncionario, "Preencha todos os campos para alterar um funcionario!");
+            return false;
+        }
+        
+        try {
+            String cpf = telaFuncionario.getTfdCpf();
+            String nome = telaFuncionario.getTfdNome();
+            String identidade = telaFuncionario.getTfdIdentidade();
+            String salario = telaFuncionario.getTfdSalario();
+            
+            try {
+                float salarioFloat = Float.parseFloat(salario);
+                
+                funcionario = new Funcionario(cpf, nome, salarioFloat, identidade);
+                
+                funcionario.setNome(nome);
+                funcionario.setIdentidade(identidade);
+                funcionario.setSalario(salarioFloat);
+                
+                repository.alterar(funcionario);
+                
+                return true;
+                
+            } catch (NumberFormatException e) {
+                System.out.println(e.getMessage());
+                MensagemUtil.addErro(telaFuncionario, "O campo de salário deve conter apenas números");
+            }
+            
+        } catch (NoSuchElementException e){
+            MensagemUtil.addAviso(telaFuncionario, "Não foi encontrado funcionário com o CPF informado!");
+        }
+        return false;
     }
     
     private boolean camposEmBranco(){

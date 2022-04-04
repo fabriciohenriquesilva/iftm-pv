@@ -2,7 +2,6 @@ package repository;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import model.Funcionario;
 
 public class FuncionarioRepository {
@@ -29,8 +28,16 @@ public class FuncionarioRepository {
         return func;
     }
 
-    public void alterar(){
+    public Funcionario alterar(Funcionario funcionario){
         
+        Funcionario funcAlterado = consultar(funcionario.getCpf());
+        
+        funcAlterado.setNome(funcionario.getNome());
+        funcAlterado.setIdentidade(funcionario.getIdentidade());
+        funcAlterado.setSalario(funcionario.getSalario());
+//        funcionarios.add(funcionarios.indexOf(funcionario), funcAlterado);
+        
+        return funcAlterado;
     }
     
     public void excluir(){

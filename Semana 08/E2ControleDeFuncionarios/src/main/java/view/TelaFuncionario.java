@@ -44,6 +44,8 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
         btnIncluir = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        btnAlterar = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -74,6 +76,15 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
 
         jLabel1.setText("*É obrigatório o preenchimento de todos os campos acima para incluir um novo registro!");
 
+        btnAlterar.setText("Alterar");
+        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarActionPerformed(evt);
+            }
+        });
+
+        btnExcluir.setText("Excluir");
+
         javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
         panel.setLayout(panelLayout);
         panelLayout.setHorizontalGroup(
@@ -81,29 +92,34 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
             .addGroup(panelLayout.createSequentialGroup()
                 .addGap(76, 76, 76)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelLayout.createSequentialGroup()
+                        .addComponent(btnIncluir)
+                        .addGap(45, 45, 45)
+                        .addComponent(btnBuscar)
+                        .addGap(40, 40, 40)
+                        .addComponent(btnAlterar)
+                        .addGap(43, 43, 43)
+                        .addComponent(btnExcluir))
                     .addComponent(jLabel1)
                     .addGroup(panelLayout.createSequentialGroup()
+                        .addGap(13, 13, 13)
                         .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnIncluir)
                             .addComponent(lblSalario)
                             .addComponent(lblIdentidade)
                             .addComponent(lblNome)
                             .addComponent(lblCpf))
+                        .addGap(88, 88, 88)
                         .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelLayout.createSequentialGroup()
-                                .addGap(88, 88, 88)
-                                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tfdIdentidade, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfdCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfdSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfdNome, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(panelLayout.createSequentialGroup()
-                                .addGap(38, 38, 38)
-                                .addComponent(btnBuscar)))))
+                            .addComponent(tfdIdentidade, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfdCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfdSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfdNome, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(0, 127, Short.MAX_VALUE))
         );
 
         panelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {lblCpf, lblIdentidade, lblNome, lblSalario});
+
+        panelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAlterar, btnBuscar, btnExcluir, btnIncluir});
 
         panelLayout.setVerticalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,11 +142,13 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
                     .addComponent(lblSalario))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addGap(11, 11, 11)
+                .addGap(18, 18, 18)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnIncluir)
-                    .addComponent(btnBuscar))
-                .addContainerGap(203, Short.MAX_VALUE))
+                    .addComponent(btnBuscar)
+                    .addComponent(btnAlterar)
+                    .addComponent(btnExcluir))
+                .addContainerGap(196, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -154,13 +172,22 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnIncluirActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        
-        funcionarioController.consultar();
+        String cpfBuscado = JOptionPane.showInputDialog("Digite o CPF do funcionário a ser buscado: ");
+        funcionarioController.consultar(cpfBuscado);
     }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+//        String cpfBuscado = JOptionPane.showInputDialog("Digite o CPF do funcionário a ser buscado: ");
+//        funcionarioController.consultar(cpfBuscado);
+        funcionarioController.alterar();
+        
+    }//GEN-LAST:event_btnAlterarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnIncluir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblCpf;
